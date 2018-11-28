@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WeatherDemo</string>
+    <string name="txt_please_wait">Please wait ...</string>
+    <string name="comment">Comment</string>
+    <string name="loading_more_videos">Loading more videos</string>
+    <string name="temperature">Temperature</string>
+    <string name="rainfall">Rainfall</string>
+</resources>

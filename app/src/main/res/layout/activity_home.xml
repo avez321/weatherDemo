@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/years_spinner"
+            android:layout_width="@dimen/width_120dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="@dimen/margin_top_32dp"
+            android:layout_marginEnd="@dimen/margin_end8dp"
+            android:layout_marginRight="@dimen/margin_end8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Spinner
+            android:id="@+id/country_spinner"
+            android:layout_width="@dimen/width_120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_8dp"
+            android:layout_marginLeft="@dimen/margin_start_8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/years_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/years_spinner"
+            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/years_spinner" />
+
+
+        <Button
+            android:id="@+id/btn_temperature"
+            android:layout_width="@dimen/width_80dp"
+            android:layout_height="@dimen/height_30dp"
+            android:layout_marginTop="@dimen/margin_top_8dp"
+            android:background="@drawable/metric_button_selector"
+            android:text="@string/temperature"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.31"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/country_spinner" />
+
+
+        <Button
+            android:id="@+id/btn_rainfall"
+            android:layout_width="@dimen/width_80dp"
+            android:layout_height="@dimen/height_30dp"
+            android:layout_marginTop="@dimen/margin_top_8dp"
+            android:background="@drawable/metric_button_selector"
+            android:text="@string/rainfall"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_temperature"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintStart_toEndOf="@+id/btn_temperature"
+            app:layout_constraintTop_toTopOf="@+id/btn_temperature"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="@dimen/width_0dp"
+            android:layout_height="@dimen/height_0dp"
+            android:layout_marginTop="@dimen/margin_top_8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_temperature" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
