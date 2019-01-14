@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.example.avi_pc.weatherdemo.Constants;
 import com.example.avi_pc.weatherdemo.R;
@@ -26,7 +25,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
     private ActivityHomeBinding activityHomeBinding;
 
     @Inject
-    HomePresenter homePresenter;
+    HomePresenter presenter;
 
 
     @Override
@@ -34,26 +33,26 @@ public class HomeActivity extends BaseActivity implements HomeView {
         super.onCreate(savedInstanceState);
         activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         getActivityComponent().inject(this);
-        homePresenter.attachView(this);
-        homePresenter.init();
+        presenter.attachView(this);
+        presenter.init();
 
         activityHomeBinding.btnRainfall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                homePresenter.setTemperature(false);
+                presenter.setTemperature(false);
                 v.setSelected(true);
                 activityHomeBinding.btnTemperature.setSelected(false);
-                homePresenter.getYearlyWeatherData(activityHomeBinding.yearsSpinner.getSelectedItem().toString());
+                presenter.getYearlyWeatherData(activityHomeBinding.yearsSpinner.getSelectedItem().toString());
             }
         });
 
         activityHomeBinding.btnTemperature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                homePresenter.setTemperature(true);
+                presenter.setTemperature(true);
                 v.setSelected(true);
                 activityHomeBinding.btnRainfall.setSelected(false);
-                homePresenter.getYearlyWeatherData(activityHomeBinding.yearsSpinner.getSelectedItem().toString());
+                presenter.getYearlyWeatherData(activityHomeBinding.yearsSpinner.getSelectedItem().toString());
             }
         });
     }
@@ -68,7 +67,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         activityHomeBinding.yearsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                homePresenter.getYearlyWeatherData(activityHomeBinding.yearsSpinner.getSelectedItem().toString());
+                presenter.getYearlyWeatherData(activityHomeBinding.yearsSpinner.getSelectedItem().toString());
 
             }
 
@@ -109,7 +108,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return homePresenter.getXAxisData(value);
+                return presenter.getXAxisData(value);
             }
         });
 
@@ -134,7 +133,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         activityHomeBinding.countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                homePresenter.getCountryWeatherData(activityHomeBinding.countrySpinner.getSelectedItem().toString());
+                presenter.getCountryWeatherData(activityHomeBinding.countrySpinner.getSelectedItem().toString());
             }
 
             @Override
